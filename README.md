@@ -8,9 +8,58 @@ This library primarily leverages torch.Library to sub out existing PyTorch kerne
 
 ## Installation
 
-```bash
-pip install -e .
+### 🚀 Quick Start with Google Colab (Recommended)
+
+The easiest way to get started is with Google Colab, which provides free GPU access:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cghart/batch_invariant_ops/blob/main/notebooks/batch_invariant_ops_colab.ipynb)
+
+**Quick setup in Colab:**
+1. Click the badge above (or create a new Colab notebook)
+2. Change runtime to GPU: `Runtime → Change runtime type → Hardware accelerator: GPU`
+3. Run this cell:
+```python
+!git clone https://github.com/cghart/batch_invariant_ops
+%cd batch_invariant_ops
+!bash cloud/setup_cloud.sh
 ```
+
+### 💻 Local Installation (Requires NVIDIA GPU)
+
+**Prerequisites:**
+- NVIDIA GPU with CUDA capability
+- CUDA Toolkit 11.8+ or 12.x
+- Python 3.8-3.13
+
+**Installation steps:**
+```bash
+# 1. Install PyTorch with CUDA support
+pip install torch>=2.1.0 --index-url https://download.pytorch.org/whl/cu118
+
+# 2. Install Triton
+pip install triton
+
+# 3. Clone and install this library
+git clone https://github.com/cghart/batch_invariant_ops.git
+cd batch_invariant_ops
+pip install -e .
+
+# 4. Verify installation
+python cloud/verify_gpu.py
+```
+
+### ☁️ Cloud GPU Platforms
+
+For longer experiments or better GPUs:
+
+| Platform | Cost | Best For | Setup |
+|----------|------|----------|--------|
+| **Google Colab** | Free - $10/mo | Quick testing, demos | One-click notebooks |
+| **Paperspace** | $0.45-3/hr | Development, training | `bash cloud/setup_cloud.sh` |
+| **Vast.ai** | $0.20-2/hr | Cost optimization | Docker deployment |
+| **Lambda Labs** | $1.10-2/hr | Production workloads | SSH access |
+
+See [cloud/alternative_platforms.md](cloud/alternative_platforms.md) for detailed setup instructions.
 
 ## Quick Start
 
